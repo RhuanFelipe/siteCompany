@@ -168,7 +168,7 @@ section {
 --------------------*/
 
 header {
-    background-image: url(../images/demo/bg-main.jpg);
+    background-image: url(../images/background.jpg);
     background-repeat: none;
     background-attachment: scroll;
     background-position: center center;
@@ -706,8 +706,8 @@ font-size: 11px;
 
 .btn-xl {
     color: #fff;
-     background-color: #726FB9;
-    border-color: #726FB9;
+    background-color: #2cbba6;
+    border-color: #1e9281;
     font-family: "Robot",sans-serif;
     text-transform: uppercase;
     font-weight: 700;
