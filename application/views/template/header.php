@@ -24,10 +24,20 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+		<?php 
+			if(isset($styles)){
+				foreach ($styles as $style_name) {
+					$href = base_url()."public/css/".$style_name;
+		?>
+			<link href="<?php echo $href ?>" rel="stylesheet">
+		<?php
+				}
+			}
+		?>
 	</head>
 	<body id="page-top">
 		<!-- Navigation -->
-		<nav class="navbar navbar-default navbar-fixed-top">
+		<nav class="navbar navbar-default navbar-shrink navbar-fixed-top">
 			<div class="container">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header page-scroll">
@@ -46,16 +56,19 @@
 							<a href="#page-top"></a>
 						</li>
 						<li>
-							<a class="page-scroll" href="#about">Sobre</a>
+							<a class="page-scroll" href="<?php echo base_url(); ?>#about">Sobre</a>
 						</li>
 						<li>
-							<a class="page-scroll" href="#portfolio">Cursos</a>
+							<a class="page-scroll" href="<?php echo base_url(); ?>#portfolio">Cursos</a>
 						</li>
 						<li>
-							<a class="page-scroll" href="#team">Equipe</a>
+							<a class="page-scroll" href="<?php echo base_url(); ?>#team">Equipe</a>
 						</li>
 						<li>
-							<a class="page-scroll" href="#contact">Contato</a>
+							<a class="page-scroll" href="<?php echo base_url(); ?>#contact">Contato</a>
+						</li>	
+						<li>
+							<a class="page-scroll" href="<?php echo base_url(); ?>restrict">Login</a>
 						</li>
 					</ul>
 				</div>
@@ -63,15 +76,4 @@
 			</div>
 			<!-- /.container-fluid -->
 		</nav>
-		<!-- Header -->
-		<header>
-			<div class="container">
-				<div class="slider-container">
-					<div class="intro-text">
-						<div class="intro-lead-in">Aprenda com profissionais qualificados</div>
-						<div class="intro-heading">Alfahelix treinamentos</div>
-						<a href="<?php echo base_url(); ?>#portfolio" class="page-scroll btn btn-xl">Conheça nossos cursos</a>
-					</div>
-				</div>
-			</div>
-		</header>
+	
