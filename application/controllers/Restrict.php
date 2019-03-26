@@ -12,7 +12,13 @@ class Restrict extends CI_Controller {
 		//echo password_hash('123456',PASSWORD_DEFAULT);
 
 		if($this->session->userdata("user_id")){
-			$this->template->show("restrict.php");
+			$data = array(
+			"scripts" => array( 
+				"util.js",
+				"restrict.js"
+				) 
+			);
+			$this->template->show("restrict.php",$data);
 		}else{
 			$data = array(
 			"scripts" => array( 
@@ -42,7 +48,7 @@ class Restrict extends CI_Controller {
 
 		if(empty($username)){
 			$json["status"] = 0;
-			$json["error_list"]["#btn_login"]  = "Úsuario não pode ser vázio";
+			$json["error_list"]["#btn_login"]  = "Usuário não pode ser vázio";
 		}else{
 			$this->load->model("users_model");
 			$result = $this->users_model->get_user_data($username);
@@ -59,7 +65,34 @@ class Restrict extends CI_Controller {
 				$json["status"] = 0;
 			}
 			if($json["status"] == 0){
-			$json["error_list"]["#btn_login"] = "Úsuario e/ou senha incorretos!";
+			$json["error_list"]["#btn_login"] = "Usuário e/ou senha incorretos!";
+			}
+		}
+		echo json_encode($json);
+	}
+
+	public function ajax_import_image(){
+		if(!$this->input->is_ajax_request()){
+			exit("Nenhum acesso de script direto permitido");
+		}
+		$config["upload_path"] = "./tmp/";
+		$config["allowed_files"] = "gif|jpg|png";
+		$config["overwrite"] = TRUE;
+		$this->load->library("upload",$config);
+
+		$json = array();
+		$json["status"] = 1;
+
+		if(!$this->upload->do_upload("image_file")){
+			$json["status"] = 0;
+			$json["error"] = $this->upload->display_errors("","");
+		}else{
+			if($this->upload->data()["size"] <= 1024){
+				$file_name = $this->upload->data()["file_name"];
+				$json["img_path"] = base_url() . 'tmp/' . $file_name;
+			}else{
+				$json["status"] = 0;
+				$json["error"] = "O arquivo não deve ser maior que 1MB!";
 			}
 		}
 		echo json_encode($json);
