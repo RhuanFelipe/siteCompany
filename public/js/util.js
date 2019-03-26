@@ -1,4 +1,4 @@
-const BASE_URL = "localhost/siteCompany/";
+const BASE_URL = "http://localhost/siteCompany/";
 
 function clearErrors(){
 	$(".has-error").removeClass("has-error");
