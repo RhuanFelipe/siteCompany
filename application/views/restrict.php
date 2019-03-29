@@ -160,12 +160,12 @@
 					<div class="form-group">
 						<label class="col-lg-2 control-label">Foto</label>
 						<div class="col-lg-10">
-							<img src="" id="member_img_path" style="max-height: 400px;max-width: 400px" >
+							<img src="" id="member_photo_path" style="max-height: 400px;max-width: 400px" >
 							<label class="btn btn-info btn-block">
 								<i class="fa fa-upload">&nbsp;&nbsp;Importar Foto</i>
-								<input type="file" accept="image/*" name="btn_upload_member_img" id="btn_upload_member_img"  class="form-control" style="display: none;">
+								<input type="file" accept="image/*" name="btn_upload_member_photo" id="btn_upload_member_photo"  class="form-control" style="display: none;">
 							</label>
-							<input type="" name="member_img" id="course_img" >
+							<input type="" name="member_photo" id="member_photo" >
 							<span class="help-block"></span>
 						</div>
 					</div>
